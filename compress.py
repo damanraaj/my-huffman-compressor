@@ -34,7 +34,6 @@ def encodeText(text, codes):
     for i in range(0, len(enc), 8):
         splitencoded.append(enc[i : i + 8])
     output = map(lambda n: int(n, 2).to_bytes(), splitencoded)
-    print(splitencoded)
     return output
 
 

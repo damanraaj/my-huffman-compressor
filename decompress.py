@@ -29,7 +29,4 @@ def readEncodedFile(path):
 
 def decompress(path):
     codes, encoded = readEncodedFile(path)
-    print(codes)
-    print(list(encoded))
     mapping = getCodeTrie(codes)
-    print(mapping)
