@@ -3,19 +3,19 @@ from fileutils import CODES_SEPERATOR
 
 def getCodeTrie(codes: str):
     mapping = {}
-    v = False
+    isValue = False
     curr = mapping
     for c in codes:
-        if v:
+        if isValue:
             curr["V"] = c
-            v = False
+            isValue = False
             curr = mapping
         elif c.isdigit():
             if c not in curr:
                 curr[c] = {}
             curr = curr[c]
         elif c == ":":
-            v = True
+            isValue = True
     return mapping
 
 
