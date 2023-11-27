@@ -22,7 +22,7 @@ def getCodeTrie(codes: str):
 def readEncodedFile(path):
     with open(path, "rb") as file:
         content = file.read()
-        codes, encodedBytes = content.split(b"$$\n", 1)
+        codes, encodedBytes = content.split(CODES_SEPERATOR.encode(), 1)
         encoded = map(chr, encodedBytes)
         return codes.decode(), encoded
 
