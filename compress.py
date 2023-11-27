@@ -37,7 +37,7 @@ def encodeText(text, codes):
     return output
 
 
-def invertCodes(codes):
+def invertCodes(codes) -> str:
     return ",".join(f"{v}:{k}" for k, v in codes.items())
 
 
@@ -51,6 +51,10 @@ def compressText(data):
 def compressFile(path, output):
     with open(path, "r") as file:
         fileContent = file.read()
-    codes, encoded = compressText(fileContent)
-    writeAsText(invertCodes(codes) + CODES_SEPERATOR, output)
-    writeByteArray(encoded, output)
+        codes, encoded = compressText(fileContent)
+        with open(output, "wb") as file:
+            file.write(invertCodes(codes).encode())
+            file.write(CODES_SEPERATOR.encode())
+            for b in encoded:
+                file.write(b)
+        return codes, encoded
