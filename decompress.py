@@ -1,4 +1,4 @@
-from fileutils import CODES_SEPERATOR
+from compress import CODES_SEPERATOR
 
 
 def getCodeTrie(codes: str):

@@ -1,11 +1,12 @@
 from collections import Counter
 from heapq import heappop, heappush
+from typing import Iterable
 
-from fileutils import CODES_SEPERATOR
+CODES_SEPERATOR = "$$\n"
 
 
-def buildTree(txt):
-    freq = sorted(Counter(txt).items(), key=lambda pair: pair[1])
+def buildTree(text: str) -> list[list[str | list | None]]:
+    freq = sorted(Counter(text).items(), key=lambda pair: pair[1])
     heap = [[v, k, None, None] for k, v in freq]
     while len(heap) > 1:
         left = heappop(heap)
@@ -14,7 +15,7 @@ def buildTree(txt):
     return heappop(heap)
 
 
-def buildCodes(tree, codes=None, pre=""):
+def buildCodes(tree, codes=None, pre="") -> dict[str, str]:
     if codes is None:
         codes = {}
     if not tree[2] and not tree[3]:
@@ -27,7 +28,7 @@ def buildCodes(tree, codes=None, pre=""):
     return codes
 
 
-def encodeText(text, codes):
+def encodeText(text, codes) -> Iterable[bytes]:
     enc = "".join(map(codes.get, text))
     splitencoded = []
     for i in range(0, len(enc), 8):

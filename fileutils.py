@@ -1,1 +1,0 @@
-CODES_SEPERATOR = "$$\n"
