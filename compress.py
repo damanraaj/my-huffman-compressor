@@ -1,7 +1,6 @@
 from collections import Counter
 from heapq import heappop, heappush
 
-from fileutils import writeAsText, writeByteArray
 from fileutils import CODES_SEPERATOR
 
 

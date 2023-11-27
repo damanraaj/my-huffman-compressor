@@ -1,4 +1,4 @@
-from fileutils import CODES_SEPERATOR, writeAsText
+from fileutils import CODES_SEPERATOR
 
 
 def getCodeTrie(codes: str):
@@ -54,5 +54,6 @@ def decompress(path):
     codes, encoded = readEncodedFile(path)
     mapping = getCodeTrie(codes)
     decoded = decodeText(mapping, encoded)
-    writeAsText(decoded, path + "extracted")
+    with open(path + "extracted", "w") as extracted:
+        extracted.write(decoded)
     return codes, decoded
