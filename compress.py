@@ -49,7 +49,7 @@ def compressText(data):
 
 
 def compressFile(path, output):
-    with open(path, "r") as file:
+    with open(path, "r", encoding="utf-8") as file:
         fileContent = file.read()
         codes, encoded = compressText(fileContent)
         with open(output, "wb") as file:

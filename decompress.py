@@ -54,6 +54,6 @@ def decompress(path):
     codes, encoded = readEncodedFile(path)
     mapping = getCodeTrie(codes)
     decoded = decodeText(mapping, encoded)
-    with open(path + "extracted", "w") as extracted:
+    with open(path + "extracted", "w", encoding="utf-8") as extracted:
         extracted.write(decoded)
     return codes, decoded
