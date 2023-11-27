@@ -31,10 +31,11 @@ def decodeText(tree, encoded):
     out = ""
     curr = tree
     data = list(encoded)
-    last = data.pop()
+    last = False
+    if ord(data[-1]) == 0:
+        data.pop()
+        last = True
     data = [bin(ord(b))[2:].zfill(8) for b in data]
-    if ord(last) != 0:
-        data.append(bin(ord(last))[2:].zfill(8))
     for byte in data:
         for c in byte:
             if c in curr:
@@ -42,7 +43,7 @@ def decodeText(tree, encoded):
             if "V" in curr:
                 out += curr["V"]
                 curr = tree
-    if ord(last) == 0:
+    if last:
         while "V" not in curr:
             curr = curr["0"]
         out += curr["V"]
