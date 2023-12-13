@@ -19,7 +19,7 @@ class HuffmanTest(unittest.TestCase):
         self.isSameContent(filename)
 
     def test_lorem_ipsum(self):
-        self.isSameContent("tests/Lorem ipsum.txt")
+        self.isSameContent("tests/Lorem Ipsum.txt")
 
     def test_les_miserables(self):
         self.isSameContent("tests/Les Miserables.txt")
