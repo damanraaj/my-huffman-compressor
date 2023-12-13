@@ -5,26 +5,24 @@ from decompress import decompress
 
 
 class HuffmanTest(unittest.TestCase):
-    def test_helloWorld(self):
-        compressFile("tests/hello", "tests/hello.out")
-        decompress("tests/hello.out")
-        with open("tests/hello") as f:
-            with open("tests/hello.out" + "extracted") as e:
+    def isSameContent(self, filename):
+        compressed = filename + ".out"
+        extracted = filename + "-extracted.out"
+        compressFile(filename, compressed)
+        decompress(compressed, extracted)
+        with open(filename, encoding="utf-8") as f:
+            with open(extracted, encoding="utf-8") as e:
                 self.assertEqual(f.read(), e.read())
+
+    def test_helloWorld(self):
+        filename = "tests/hello"
+        self.isSameContent(filename)
 
     def test_lorem_ipsum(self):
-        compressFile("tests/Lorem ipsum.txt", "tests/Lorem ipsum.out")
-        decompress("tests/Lorem ipsum.out")
-        with open("tests/Lorem ipsum.txt") as f:
-            with open("tests/Lorem ipsum.out" + "extracted") as e:
-                self.assertEqual(f.read(), e.read())
+        self.isSameContent("tests/Lorem ipsum.txt")
 
     def test_les_miserables(self):
-        compressFile("tests/Les Miserables.txt", "tests/Les Miserables.out")
-        decompress("tests/Les Miserables.out")
-        with open("tests/Les Miserables.txt", encoding="utf-8") as f:
-            with open("tests/Les Miserables.out" + "extracted", encoding="utf-8") as e:
-                self.assertEqual(f.read(), e.read())
+        self.isSameContent("tests/Les Miserables.txt")
 
 
 if __name__ == "__main__":

@@ -51,10 +51,10 @@ def decodeText(tree, encoded):
     return out
 
 
-def decompress(path):
+def decompress(path, output):
     codes, encoded = readEncodedFile(path)
     mapping = getCodeTrie(codes)
     decoded = decodeText(mapping, encoded)
-    with open(path + "extracted", "w", encoding="utf-8") as extracted:
+    with open(output, "w", encoding="utf-8") as extracted:
         extracted.write(decoded)
     return codes, decoded
