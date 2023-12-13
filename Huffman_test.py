@@ -15,8 +15,7 @@ class HuffmanTest(unittest.TestCase):
                 self.assertEqual(f.read(), e.read())
 
     def test_helloWorld(self):
-        filename = "tests/hello"
-        self.isSameContent(filename)
+        self.isSameContent("tests/hello")
 
     def test_lorem_ipsum(self):
         self.isSameContent("tests/Lorem Ipsum.txt")
