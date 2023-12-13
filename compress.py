@@ -5,7 +5,7 @@ from typing import Iterable
 CODES_SEPERATOR = "$$\n"
 
 
-def buildTree(text: str) -> list[list[str | list | None]]:
+def buildTree(text: str):
     freq = sorted(Counter(text).items(), key=lambda pair: pair[1])
     heap = [[v, k, None, None] for k, v in freq]
     while len(heap) > 1:
