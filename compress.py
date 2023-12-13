@@ -33,7 +33,7 @@ def encodeText(text, codes) -> Iterable[bytes]:
     splitencoded = []
     for i in range(0, len(enc), 8):
         splitencoded.append(enc[i : i + 8])
-    output = map(lambda n: int(n, 2).to_bytes(), splitencoded)
+    output = map(lambda n: int(n, 2).to_bytes(length=1, byteorder="big"), splitencoded)
     return output
 
 
